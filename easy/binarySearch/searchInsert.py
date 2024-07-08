@@ -37,6 +37,7 @@ print(str(result))
 # given sorted arr, highest elt, lowest elt, and target
 # if target is in arr, return index
 # if target is not in arr, return -1
+# arr = [ 2, 3, 4, 10, 40 ] --> give it binarySearch(arr, 10, 0, 4)
 
 # nums is an arr, target is an int
 def searchInsert(nums, target):
@@ -45,16 +46,19 @@ def searchInsert(nums, target):
     low = 0
     
     # call actual binarysearch in this func
-    def binarysearch(arr, target, high, low):
+    def binarysearch(arr, target, low, high):
         if high >= low:
             # find midpoint
             mid = (high+low)//2
-            
-
-
-
+            if arr[mid] == target:
+                return mid          # return index
+            elif arr[mid] > target:        # meaning: go left
+                return binarysearch(arr, target, low, mid-1)
+            else: 
+                return binarysearch(arr, target, mid+1, high)
         else: 
             return -1 
 
 
     resultIndex = binary_search(nums, target, high, low)
+    print(resultIndex)
