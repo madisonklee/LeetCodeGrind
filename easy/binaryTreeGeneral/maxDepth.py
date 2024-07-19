@@ -9,7 +9,8 @@ def maxDepth(self, root):
     #            15   7
 
     # base case 
-    if root == None: return 0
+    if root == None: 
+        return 0
 
     # find max depth on both sides
     left_depth = self.maxDepth(root.left)
